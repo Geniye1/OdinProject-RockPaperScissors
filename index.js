@@ -5,12 +5,12 @@
 
 'use strict'
 
-const winMessage = "You seem to have bested me, it won't happen again though.";
-const loseMessage = "You have failed, I clearly am the superior being.";
+
 
 function getComputerChoice() {
     let choices = ["Rock", "Paper", "Scissors"];
     let randomChoice = Math.floor(Math.random() * choices.length);
+    console.log(choices[randomChoice]);
     return choices[randomChoice];
 }
 
@@ -18,26 +18,26 @@ function playRound(userChoiceIn, computerChoiceIn) {
     // Ensure the user isn't pulling a fast one on me
     if (isNaN(userChoiceIn)) {
         if (userChoiceIn == computerChoiceIn) {
-            console.log("We seem to have chosen the same thing. So, how long have you be a follower and not a leader?");
+            resultText.textContent = "We seem to have chosen the same thing. So, how long have you be a follower and not a leader?";
         }
         else {
             if (userChoiceIn == "rock" && computerChoiceIn == "paper") {
-                console.log(loseMessage);
+                resultText.textContent = loseMessage;
             }
             else if (userChoiceIn == "paper" && computerChoiceIn == "rock") {
-                console.log(winMessage);
+                resultText.textContent = winMessage;
             }
             else if (userChoiceIn == "rock" && computerChoiceIn == "scissors") {
-                console.log(winMessage);
+                resultText.textContent = winMessage;
             }
             else if (userChoiceIn == "scissors" && computerChoiceIn == "rock") {
-                console.log(loseMessage);
+                resultText.textContent = loseMessage;
             }
             else if (userChoiceIn == "paper" && computerChoiceIn == "scissors") {
-                console.log(loseMessage);
+                resultText.textContent = loseMessage;
             }
             else if (userChoiceIn == "scissors" && computerChoiceIn == "paper") {
-                console.log(winMessage);
+                resultText.textContent = winMessage;
             }
             else {
                 console.log("uuhhh....");
@@ -51,15 +51,49 @@ function playRound(userChoiceIn, computerChoiceIn) {
     }
 }
 
-console.log('Good evening fellow citizen, it seems you have challenged me to a game of rock, paper, scissors. ' + 
-            'Whether it is friendly or not will be decided by the outcome of the game. I do not like losing.');
+function playGame(userChoiceIn, computerChoiceIn) {
+    if (totalRounds <= numberOfRounds) {
+        let outcome = playRound(userChoiceIn, computerChoiceIn);
+        if (outcome == "COMPUTER_WINS") {
+            roundsLost++;
+        }
+        else if (outcome == "PLAYER_WINS") {
+            roundsWon++;
+        }
+        else if (outcome == "TIE") {
+            // do nothing
+        }
+
+        totalRounds++;
+        // reset game
+    }
+    else {
+        // End game
+    }
+}
+
+const winMessage = "You seem to have bested me, it won't happen again though.";
+const loseMessage = "You have failed, I clearly am the superior being.";
 
 let computerChoice = getComputerChoice();
-//let userChoice = prompt('What will you decide? Rock? Maybe, paper? Dare I say... scissors? DECIDE NOW.');
-//playRound(userChoice.toLowerCase(), computerChoice.toLowerCase()); 
 
+const buttons = document.querySelectorAll(".choice-button");
+const resultText = document.querySelector("#result-text");
+
+const numberOfRounds = 5;
+let totalRounds = 0;
+let roundsWon = 0;
+let roundsLost = 0;
+
+buttons.forEach(button => {
+    button.addEventListener("click", function() {
+        playRound(button.dataset.choice.toLowerCase(), computerChoice.toLowerCase());
+    })
+});
 
 // when you lose i want it to go like FUCK FUCK FUCK NO NO SHIT NOOOOOO FUCK YOU!!!!! FUCK YOU!!!!!!!!!🤬🤬🤬🤬
+
+// make an array of possible win and loss responses, choose random one
 
 
 

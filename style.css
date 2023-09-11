@@ -25,9 +25,18 @@ body {
     border: none;   
     border-radius: 20px;
     box-shadow: 0 10px #DFCCFB;
-
+    transition: all .07s ease;
     font-size: 30px;
     background-color: #FFF3DA;
+}
+
+.choice-button:hover {
+    background-color: #cdc3ae;
+}
+
+.choice-button:active {
+    transform: scale(0.9);
+    background-color: #cdc3ae;
 }
 
 .results-container {
@@ -38,10 +47,18 @@ body {
 }
 
 #result-text {
-    
+    text-align: center;
 }
 
 #not-span {
     color: red;
     font-style: italic;
+}
+
+.reset-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 100vh;
 }

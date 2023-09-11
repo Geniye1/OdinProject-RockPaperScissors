@@ -6,7 +6,7 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
     <div class="main-container">
@@ -14,13 +14,17 @@
             <h1 id="result-text">
                 Good evening fellow citizen. It would seem that you have challenged me to a game of rock, paper, scissors.
                 Whether it is friendly or not will be decided by the outcome of the game.
+                <br>
+                I do <span id="not-span">not</span> like losing.
             </h1>
-            <h1 id="result-text">I do <span id="not-span">not</span> like losing.</h1>
         </div>
         <div class="button-container">
-            <button class="choice-button">Rock</button>
-            <button class="choice-button">Paper</button>
-            <button class="choice-button">Scissors</button>
+            <button data-choice="rock" class="choice-button">Rock</button>
+            <button data-choice="paper" class="choice-button">Paper</button>
+            <button data-choice="scissors" class="choice-button">Scissors</button>
+        </div>
+        <div class="reset-button-container">
+            <button class="reset-button">Reset Game</button>
         </div>
     </div>
 </body>
