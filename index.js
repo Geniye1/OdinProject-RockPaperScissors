@@ -55,7 +55,11 @@ console.log('Good evening fellow citizen, it seems you have challenged me to a g
             'Whether it is friendly or not will be decided by the outcome of the game. I do not like losing.');
 
 let computerChoice = getComputerChoice();
-let userChoice = prompt('What will you decide? Rock? Maybe, paper? Dare I say... scissors? DECIDE NOW.');
-playRound(userChoice.toLowerCase(), computerChoice.toLowerCase());  
+//let userChoice = prompt('What will you decide? Rock? Maybe, paper? Dare I say... scissors? DECIDE NOW.');
+//playRound(userChoice.toLowerCase(), computerChoice.toLowerCase()); 
+
+
+// when you lose i want it to go like FUCK FUCK FUCK NO NO SHIT NOOOOOO FUCK YOU!!!!! FUCK YOU!!!!!!!!!🤬🤬🤬🤬
+
 
 
