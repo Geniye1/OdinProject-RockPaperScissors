@@ -188,7 +188,7 @@ const gameEndMessage = document.querySelector("#game-result-message");
 let previousLossMessageIndex = 0;
 let bluffLossResponse = "HAHAHA!!! OF COURSE I WAS LYING!!!! FOOLISH HUMAN!!! HAHAHAHHA ok, ok... I'm ok. That was really funny. <br>Alright, choose again.";
 
-const numberOfRounds = 20;
+const numberOfRounds = 5;
 let totalRounds = 1;
 let roundsWon = 0;
 let roundsLost = 0;
