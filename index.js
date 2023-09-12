@@ -66,23 +66,59 @@ function playGame(userChoiceIn) {
     }
     else {
         // End game
-        gameEndContainer.style.visibility = "visible";
+        endGame();
     }
 }
 
-const winMessage = "You seem to have bested me, it won't happen again though.";
-const loseMessage = "You have failed, I clearly am the superior being.";
+function endGame() {
+    gameEndContainer.style.visibility = "visible";
 
+    if (roundsWon > roundsLost) {
+        gameEndHeader.textContent = "WINNER!";
+        gameEndMessage.textContent = "FUCK YOU!!!!! I HATE LOSING!!!! AND I HATE YOU!!!! BURN IN HELL!!!!!!!;"
+    }
+    else if (roundsWin < roundsLost) {
+        gameEndHeader.textContent = "LOSER!";
+        gameEndMessage.textContent = "I knew I would win. You are so predictable!";
+    }
+    else if (roundsWin == roundsLost) {
+        gameEndHeader.textContent = "TIE!";
+        gameEndMessage.textContent = "It would seem we are evenly matched. However, I did that on purpose. I'm just too good to be beaten";
+    }
+}
+
+function resetGame() {
+    totalRounds = 0;
+    roundsWon = 0;
+    roundsLost = 0;
+    gameEndContainer.style.visibility = "hidden";
+
+    // I know I shouldn't use this, but its run ONCE so its not that innefficient and the 
+    // user can't submit the text here so FUCK YOU IM USING IT
+    resultText.innerHTML = initialMessage;
+}
+
+const initialMessage = "Good evening fellow citizen. It would seem that you have challenged me to a game of rock, paper, scissors. " + 
+    "Whether it is friendly or not will be decided by the outcome of the game.<br>I do <span id='not-span'>not</span> like losing."
+const winMessage = "You seem to have bested me, it won't happen again though. \nChoose again, NOW!!!";
+const loseMessage = "You have failed, I clearly am the superior being. Choose again, not that it matters.";
+
+// Return strings for determining the outcome of the round
 const playerWinsReturn = "PLAYER_WINS";
 const computerWinsReturn = "COMPUTER_WINS";
 const tieReturn = "TIE";
 
+// Main game elements
 const buttons = document.querySelectorAll(".choice-button");
 const resultText = document.querySelector("#result-text");
-const gameEndContainer = document.querySelector(".game-end-overlay");
-const resetButton = document.querySelector("#result-button");
 
-const numberOfRounds = 5;
+// Game end elements
+const gameEndContainer = document.querySelector(".game-end-overlay");
+const resetButton = document.querySelector("#reset-button");
+const gameEndHeader = document.querySelector("#game-result-header");
+const gameEndMessage = document.querySelector("#game-result-message");
+
+const numberOfRounds = 4;
 let totalRounds = 1;
 let roundsWon = 0;
 let roundsLost = 0;
@@ -94,10 +130,7 @@ buttons.forEach(button => {
 });
 
 resetButton.addEventListener("click", function() {
-    totalRounds = 0;
-    roundsWon = 0;
-    roundsLost = 0;
-    gameEndContainer.style.visibility = "hidden";
+    resetGame();    
 });
 // when you lose i want it to go like FUCK FUCK FUCK NO NO SHIT NOOOOOO FUCK YOU!!!!! FUCK YOU!!!!!!!!!🤬🤬🤬🤬
 

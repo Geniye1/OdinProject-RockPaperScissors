@@ -38,6 +38,50 @@ body {
     margin-top: 50px;
 }
 
+#game-result-header {
+    font-size: 200px;
+    height: 200px;
+    color: white;
+    margin: 0 0 0 0;
+}
+
+#game-result-hr {
+    border-color: white;
+    background-color: white;
+    width: 50%;
+    height: 3px;
+    margin: 0 0 40px 0;
+}
+
+#game-result-message {
+    font-size: 25px;
+    color: white;
+    text-wrap: wrap;
+}
+
+.reset-button-container {
+    position: relative;
+    top: 200px; 
+}
+
+#reset-button {
+    border: none;
+    background-color: white;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+#reset-button:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+#reset-button:active {
+    transform: scale(0.9);
+    background-color: rgb(150, 150, 150);
+}
+
 .button-container {
     display: flex;
     gap: 30px;
@@ -77,12 +121,4 @@ body {
 #not-span {
     color: red;
     font-style: italic;
-}
-
-.reset-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    margin-top: 100vh;
 }
