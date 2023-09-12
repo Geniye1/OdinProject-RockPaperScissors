@@ -7,11 +7,37 @@ body {
 .main-container {
     display: flex;
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 20px;
 
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 70vh;
+}
+
+.inner-score-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.score-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-counter-header {
+    margin: 0 0 0 0;
+}
+
+.score-counter {
+
+}
+
+.vertical-rule {
+    border-left: 6px solid #DFCCFB;
+    border-radius: 20px;
+    height: 100px;
 }
 
 .game-end-overlay {

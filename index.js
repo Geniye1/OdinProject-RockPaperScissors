@@ -63,6 +63,9 @@ function playGame(userChoiceIn) {
             // do nothing
         }
         totalRounds++;
+        playerScore.textContent = roundsWon;
+        geribaldiScore.textContent = roundsLost;
+        roundCounter.textContent = "Round: " + totalRounds;
     }
     else {
         // End game
@@ -91,6 +94,9 @@ function resetGame() {
     totalRounds = 0;
     roundsWon = 0;
     roundsLost = 0;
+    roundCounter.textContent = "Round: 0";
+    playerScore.textContent = "0";
+    geribaldiScore.textContent = "0";
     gameEndContainer.style.visibility = "hidden";
 
     // I know I shouldn't use this, but its run ONCE so its not that innefficient and the 
@@ -111,6 +117,9 @@ const tieReturn = "TIE";
 // Main game elements
 const buttons = document.querySelectorAll(".choice-button");
 const resultText = document.querySelector("#result-text");
+const playerScore = document.querySelector(".score-counter[data-game-contestant=player]");
+const geribaldiScore = document.querySelector(".score-counter[data-game-contestant=geribaldi]");
+const roundCounter = document.querySelector("#round-counter");
 
 // Game end elements
 const gameEndContainer = document.querySelector(".game-end-overlay");
