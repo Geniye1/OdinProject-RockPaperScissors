@@ -20,6 +20,9 @@ function playRound(userChoiceIn) {
         }
         else {
             if (userChoiceIn == "paper" && computerChoice == "rock") {
+                // This line in the wins is purely in case they get the last message in the loseMessages array,
+                // If they do and they choose the correct one then it needs to be reset so it doesn't play the bluffResponse
+                // the next time they choose the wrong choice
                 if (previousLossMessageIndex == 5) previousLossMessageIndex = 0;
 
                 let winMessageIndex = Math.floor(Math.random() * winMessages.length);
@@ -41,6 +44,11 @@ function playRound(userChoiceIn) {
                 return playerWinsReturn;
             }
             else if (userChoiceIn == "scissors" && computerChoice == "rock") {
+                // I know this is overboard for one response that only has like a 20% chance of being displayed,
+                // but its funny. If the player loses the round and gets loseMessages[5] then that response needs to be properly
+                // followed up if the player loses again in the next round. The index merely tracks the last index so that
+                // If they do get the 5th respons in the array then it can respond accordingly. Otherwise, just choose another
+                // random loss message.
                 if (previousLossMessageIndex == 5) {
                     resultText.innerHTML = bluffLossResponse;
                     previousLossMessageIndex = 0;
@@ -49,7 +57,6 @@ function playRound(userChoiceIn) {
                     let lossMessageIndex = Math.floor(Math.random() * loseMessages.length);
                     resultText.innerHTML = loseMessages[lossMessageIndex];
                     previousLossMessageIndex = lossMessageIndex;
-                    console.log(previousLossMessageIndex);
                 }
                 
                 return computerWinsReturn;
@@ -63,7 +70,6 @@ function playRound(userChoiceIn) {
                     let lossMessageIndex = Math.floor(Math.random() * loseMessages.length);
                     resultText.innerHTML = loseMessages[lossMessageIndex];
                     previousLossMessageIndex = lossMessageIndex;
-                    console.log(previousLossMessageIndex);
                 }
 
                 return computerWinsReturn;
@@ -77,17 +83,18 @@ function playRound(userChoiceIn) {
                     let lossMessageIndex = Math.floor(Math.random() * loseMessages.length);
                     resultText.innerHTML = loseMessages[lossMessageIndex];
                     previousLossMessageIndex = lossMessageIndex;
-                    console.log(previousLossMessageIndex);
                 }
 
                 return computerWinsReturn;
             }
             else {
+                // This should never run sooooo..... idk
                 console.log("uuhhh....");
             }
         }
     }
     else {
+        // This should also never run but you know... idk
         console.log("I see you have attempted to trick me, you have failed. Get the hell out of here.");
     }
 }
@@ -102,15 +109,16 @@ function playGame(userChoiceIn) {
             roundsWon++;
         }
         else if (outcome == tieReturn) {
-            // do nothing
+            // do nothing or maybe do something idk right now man
         }
         totalRounds++;
+
+        // Update the scoreboard
         playerScore.textContent = roundsWon;
         geribaldiScore.textContent = roundsLost;
         roundCounter.textContent = "Round: " + totalRounds;
     }
     else {
-        // End game
         endGame();
     }
 }
@@ -147,8 +155,6 @@ let computerChoices = ["Rock", "Paper", "Scissors"];
 
 const initialMessage = "Good evening fellow citizen. It would seem that you have challenged me to a game of rock, paper, scissors. " + 
     "Whether it is friendly or not will be decided by the outcome of the game.<br>I do <span id='not-span'>not</span> like losing."
-const winMessage = "You seem to have bested me, it won't happen again though. <br>Choose again, NOW!!!";
-const loseMessage = "You have failed, I clearly am the superior being. <br>Choose again, not that it matters.";
 
 const winMessages = ["You seem to have bested me, it won't happen again though. <br>Choose again, NOW!!!",
                      "Did you hack this website? Can you see what I will choose? Surely you must be, there's no other explanation. <br>Choose again, cheater.",
@@ -202,9 +208,3 @@ buttons.forEach(button => {
 resetButton.addEventListener("click", function() {
     resetGame();    
 });
-// when you lose i want it to go like FUCK FUCK FUCK NO NO SHIT NOOOOOO FUCK YOU!!!!! FUCK YOU!!!!!!!!!🤬🤬🤬🤬
-
-// make an array of possible win and loss responses, choose random one
-
-
-
